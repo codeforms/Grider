@@ -2,6 +2,12 @@
 $grid: 16;
 $gutter: 4%;
 
+// Names
+$row-name: 'row';
+$container-name: 'container';
+$column-name: 'col';
+$column-name-small: 'sm'; 
+
 // Container
 $container-width: 90%;
 $container-small-width: 80%;
@@ -27,7 +33,7 @@ $breakpoint-large: 61.25em; // 980px
    }
 }
 
-.container {
+.#{$container-name} {
 	width: $container-width;
 	margin-left: auto;
 	margin-right: auto;
@@ -41,10 +47,10 @@ $breakpoint-large: 61.25em; // 980px
 	}
 }
 
-.row {
+.#{$row-name} {
 	position: relative;
 	width: $row-width;
-	[class^="col"] {
+	[class^="#{$column-name}"] {
 		float: left;
 		margin: $column-margin;
 		min-height: $column-min-height;
@@ -55,17 +61,17 @@ $breakpoint-large: 61.25em; // 980px
 		clear: both;
 	}
 	@for $i from 1 through $grid {
-		.col-#{$i} {
+		.#{$column-name}-#{$i} {
 			width: $column-width;
 		}
-		.col-#{$i}-sm {
+		.#{$column-name}-#{$i}-#{$column-name-small} {
 			width: ($column-width / ($grid / $i)) - ($gutter * ($grid - $i) / $grid); 
 		}
 	}
 
 	@include breakpoints($breakpoint-medium) {
 		@for $i from 1 through $grid {
-			.col-#{$i} { 
+			.#{$column-name}-#{$i} { 
 				width: ($column-width / ($grid / $i)) - ($gutter * ($grid - $i) / $grid); 
 			}
 		}
