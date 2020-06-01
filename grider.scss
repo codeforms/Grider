@@ -1,0 +1,74 @@
+// Basic
+$grid					: 16;
+$gutter 				: 4%;
+
+// Container
+$container-width 		: 90%;
+$container-small-width 	: 80%;
+$container-large-width 	: 75%;
+
+// Row
+$row-width 				: 100%;
+
+// Columns
+$column-width 			: 96%;
+$column-margin 			: .5rem;
+$column-min-height 		: 0.125rem;
+
+// Breakpoints
+$breakpoint-small		: 33.75em; // 540px
+$breakpoint-medium		: 48em; // 768px
+$breakpoint-large		: 61.25em; // 980px
+
+// Mixins
+@mixin breakpoints($size) {
+   @media only screen and (min-width: #{$size}) {
+       @content;
+   }
+}
+
+.container {
+	width: $container-width;
+	margin-left: auto;
+	margin-right: auto;
+
+	@include breakpoints($breakpoint-small) {
+		width: $container-small-width;
+	}
+
+	@include breakpoints($breakpoint-large) {
+		width: $container-large-width;
+		max-width: 60rem;
+	}
+}
+
+.row {
+	position: relative;
+	width: $row-width;
+	[class^="col"] {
+		float: left;
+		margin: $column-margin;
+		min-height: $column-min-height;
+	}
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	@for $i from 1 through $grid {
+		.col-#{$i} {
+			width: $column-width;
+		}
+		.col-#{$i}-sm {
+			width: ($column-width / ($grid / $i)) - ($gutter * ($grid - $i) / $grid); 
+		}
+	}
+
+	@include breakpoints($breakpoint-medium) {
+		@for $i from 1 through $grid {
+			.col-#{$i} { 
+				width: ($column-width / ($grid / $i)) - ($gutter * ($grid - $i) / $grid); 
+			}
+		}
+	}
+}
