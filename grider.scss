@@ -1,24 +1,24 @@
 // Basic
-$grid					: 16;
-$gutter 				: 4%;
+$grid: 16;
+$gutter: 4%;
 
 // Container
-$container-width 		: 90%;
-$container-small-width 	: 80%;
-$container-large-width 	: 75%;
+$container-width: 90%;
+$container-small-width: 80%;
+$container-large-width: 75%;
 
 // Row
-$row-width 				: 100%;
+$row-width: 100%;
 
 // Columns
-$column-width 			: 96%;
-$column-margin 			: .5rem;
-$column-min-height 		: 0.125rem;
+$column-width: 96%;
+$column-margin: .5rem;
+$column-min-height: 0.125rem;
 
 // Breakpoints
-$breakpoint-small		: 33.75em; // 540px
-$breakpoint-medium		: 48em; // 768px
-$breakpoint-large		: 61.25em; // 980px
+$breakpoint-small: 33.75em; // 540px
+$breakpoint-medium: 48em; // 768px
+$breakpoint-large: 61.25em; // 980px
 
 // Mixins
 @mixin breakpoints($size) {
@@ -38,7 +38,6 @@ $breakpoint-large		: 61.25em; // 980px
 
 	@include breakpoints($breakpoint-large) {
 		width: $container-large-width;
-		max-width: 60rem;
 	}
 }
 
