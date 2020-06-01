@@ -37,15 +37,15 @@
 
 /*** MIXINS ***/
 @mixin breakpoints($size) {
-   @media only screen and (min-width: #{$size}) {
-       @content;
-   }
+	@media only screen and (min-width: #{$size}) {
+		@content;
+	}
 }
 
 .#{$container-name} {
 	width: $container-width;
 	padding-right: $spacer;
-    padding-left: $spacer;
+	padding-left: $spacer;
 	margin-left: auto;
 	margin-right: auto;
 	@include breakpoints($breakpoint-small) {
@@ -60,13 +60,13 @@
 	flex-wrap: wrap;
 	width: $row-width;
 	margin-right: -$spacer;
-    margin-left: -$spacer;
+	margin-left: -$spacer;
 	[class^="#{$column-name}"] {
 		float: left;
 		margin: $column-margin;
 		min-height: $column-min-height;
-	    flex-grow: 1;
-    	max-width: 100%;
+		flex-grow: 1;
+		max-width: 100%;
 	}
 	@for $i from 1 through $grid {
 		.#{$column-name}-#{$i} {
