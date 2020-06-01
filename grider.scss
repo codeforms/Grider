@@ -1,81 +1,72 @@
-/* ===============
-   	GRIDER
-   =============== */
+/*
+||||||||||||||||
+|||||GRIDER|||||
+||||||||||||||||
+*/
 
-/* ==[ BASIC ]== 
-*********************/
+/*** BASIC ***/
 	$grid: 16;
 	$gutter: 4%;
-/********************/
 
-/* ==[ NAMES ]== 
-*********************/
+/*** NAMES ***/
 	$row-name: 'row';
 	$container-name: 'container';
 	$column-name: 'col';
 	$column-name-small: 'sm';
-/********************/
 
-/* ==[ CONTAINER ]== 
-*********************/
+/*** CONTAINER ***/
 	$container-width: 90%;
 	$container-small-width: 80%;
 	$container-large-width: 75%;
-/********************/
 
-/* ==[ ROW ]== 
-*********************/
+/*** ROW ***/
 	$row-width: 100%;
-/********************/
 
-/* ==[ COLUMN ]== 
-*********************/
-	$column-width: 96%;
+/*** COLUMN ***/
+	$column-width: 100%;
 	$column-margin: .5rem;
-	$column-min-height: 0.125rem;
-/********************/
+	$column-min-height: .125rem;
 
-/* ==[ BREAKPOINTS ]== 
-*********************/
+/*** BREAKPOINTS ***/
 	$breakpoint-small: 33.75em; // 540px
 	$breakpoint-medium: 48em; // 768px
 	$breakpoint-large: 61.25em; // 980px
-/********************/
 
-/* ==[ MIXINS ]== 
-*********************/
+/*** SPACER ***/
+	$spacer: 15px;
+
+/*** MIXINS ***/
 @mixin breakpoints($size) {
    @media only screen and (min-width: #{$size}) {
        @content;
    }
 }
-/********************/
 
 .#{$container-name} {
 	width: $container-width;
+	padding-right: $spacer;
+    padding-left: $spacer;
 	margin-left: auto;
 	margin-right: auto;
-
 	@include breakpoints($breakpoint-small) {
 		width: $container-small-width;
 	}
-
 	@include breakpoints($breakpoint-large) {
 		width: $container-large-width;
 	}
 }
 .#{$row-name} {
-	position: relative;
+	display: flex;
+	flex-wrap: wrap;
 	width: $row-width;
+	margin-right: -$spacer;
+    margin-left: -$spacer;
 	[class^="#{$column-name}"] {
 		float: left;
 		margin: $column-margin;
 		min-height: $column-min-height;
-	}
-	&::after {
-		content: "";
-		display: table;
-		clear: both;
+	    flex-grow: 1;
+    	max-width: 100%;
 	}
 	@for $i from 1 through $grid {
 		.#{$column-name}-#{$i} {
