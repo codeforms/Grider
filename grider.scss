@@ -1,37 +1,55 @@
-// Basic
-$grid: 16;
-$gutter: 4%;
+/* ===============
+   	GRIDER
+   =============== */
 
-// Names
-$row-name: 'row';
-$container-name: 'container';
-$column-name: 'col';
-$column-name-small: 'sm'; 
+/* ==[ BASIC ]== 
+*********************/
+	$grid: 16;
+	$gutter: 4%;
+/********************/
 
-// Container
-$container-width: 90%;
-$container-small-width: 80%;
-$container-large-width: 75%;
+/* ==[ NAMES ]== 
+*********************/
+	$row-name: 'row';
+	$container-name: 'container';
+	$column-name: 'col';
+	$column-name-small: 'sm';
+/********************/
 
-// Row
-$row-width: 100%;
+/* ==[ CONTAINER ]== 
+*********************/
+	$container-width: 90%;
+	$container-small-width: 80%;
+	$container-large-width: 75%;
+/********************/
 
-// Columns
-$column-width: 96%;
-$column-margin: .5rem;
-$column-min-height: 0.125rem;
+/* ==[ ROW ]== 
+*********************/
+	$row-width: 100%;
+/********************/
 
-// Breakpoints
-$breakpoint-small: 33.75em; // 540px
-$breakpoint-medium: 48em; // 768px
-$breakpoint-large: 61.25em; // 980px
+/* ==[ COLUMN ]== 
+*********************/
+	$column-width: 96%;
+	$column-margin: .5rem;
+	$column-min-height: 0.125rem;
+/********************/
 
-// Mixins
+/* ==[ BREAKPOINTS ]== 
+*********************/
+	$breakpoint-small: 33.75em; // 540px
+	$breakpoint-medium: 48em; // 768px
+	$breakpoint-large: 61.25em; // 980px
+/********************/
+
+/* ==[ MIXINS ]== 
+*********************/
 @mixin breakpoints($size) {
    @media only screen and (min-width: #{$size}) {
        @content;
    }
 }
+/********************/
 
 .#{$container-name} {
 	width: $container-width;
@@ -46,7 +64,6 @@ $breakpoint-large: 61.25em; // 980px
 		width: $container-large-width;
 	}
 }
-
 .#{$row-name} {
 	position: relative;
 	width: $row-width;
@@ -68,7 +85,6 @@ $breakpoint-large: 61.25em; // 980px
 			width: ($column-width / ($grid / $i)) - ($gutter * ($grid - $i) / $grid); 
 		}
 	}
-
 	@include breakpoints($breakpoint-medium) {
 		@for $i from 1 through $grid {
 			.#{$column-name}-#{$i} { 
