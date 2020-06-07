@@ -6,13 +6,12 @@
 
 /*** BASIC ***/
 	$grid: 16;
-	$gutter: 4%;
 
 /*** NAMES ***/
 	$row-name: 'row';
 	$container-name: 'container';
 	$column-name: 'col';
-	$column-name-small: 'sm';
+	$offset: 'offset';
 
 /*** CONTAINER ***/
 	$container-width: 97%;
@@ -24,7 +23,7 @@
 
 /*** COLUMN ***/
 	$column-width: 100%;
-	$column-margin: .3rem;
+	$column-padding: 0;
 	$column-min-height: .125rem;
 
 /*** BREAKPOINTS ***/
@@ -61,23 +60,27 @@
 	width: $row-width;
 	[class^="#{$column-name}"] {
 		float: left;
-		margin: $column-margin;
+		padding: $column-padding;
 		min-height: $column-min-height;
-		flex-grow: 1;
-		max-width: 100%;
 	}
 	@for $i from 1 through $grid {
 		.#{$column-name}-#{$i} {
-			width: $column-width;
+			flex-basis: $column-width; 
 		}
-		.#{$column-name}-#{$i}-#{$column-name-small} {
-			width: ($column-width / ($grid / $i)) - ($gutter * ($grid - $i) / $grid); 
+		.#{$column-name}-#{$offset}-#{$i} {
+			margin-left: 0;
+			flex-basis: $column-width; 
 		}
 	}
 	@include breakpoints($breakpoint-medium) {
 		@for $i from 1 through $grid {
+			$value : (100 / ($grid / $i) ) * 1%;
 			.#{$column-name}-#{$i} { 
-				width: ($column-width / ($grid / $i)) - ($gutter * ($grid - $i) / $grid); 
+				flex-basis: $value; 
+			}
+			.#{$column-name}-#{$offset}-#{$i} {
+				flex-basis: $value;
+				margin-left: $value;
 			}
 		}
 	}
