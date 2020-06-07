@@ -15,16 +15,16 @@
 	$column-name-small: 'sm';
 
 /*** CONTAINER ***/
-	$container-width: 90%;
-	$container-small-width: 80%;
-	$container-large-width: 75%;
+	$container-width: 97%;
+	$container-small-width: 92%;
+	$container-large-width: 88%;
 
 /*** ROW ***/
 	$row-width: 100%;
 
 /*** COLUMN ***/
 	$column-width: 100%;
-	$column-margin: .5rem;
+	$column-margin: .6rem;
 	$column-min-height: .125rem;
 
 /*** BREAKPOINTS ***/
@@ -59,8 +59,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	width: $row-width;
-	margin-right: -$spacer;
-	margin-left: -$spacer;
 	[class^="#{$column-name}"] {
 		float: left;
 		margin: $column-margin;
