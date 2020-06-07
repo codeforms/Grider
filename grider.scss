@@ -12,6 +12,7 @@
 	$container-name: 'container';
 	$column-name: 'col';
 	$offset: 'offset';
+	$equal: 'equal';
 
 /*** CONTAINER ***/
 	$container-width: 97%;
@@ -61,7 +62,14 @@
 	[class^="#{$column-name}"] {
 		float: left;
 		padding: $column-padding;
+		height: 100%;
 		min-height: $column-min-height;
+		flex-direction: column;
+	}
+	&.#{$equal} {
+		[class^="#{$column-name}"] {
+			height: auto;
+		}
 	}
 	@for $i from 1 through $grid {
 		.#{$column-name}-#{$i} {

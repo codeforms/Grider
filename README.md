@@ -1,5 +1,5 @@
 # Grider
-***Grider*** is a simple enough and fully customizable SCSS-based grid generator. Create your own responsive CSS grid system easily.
+***Grider*** is a simple enough and fully customizable SCSS-based grid generator. Create your own responsive CSS grid system easily with offset and equal height features.
 
 [![GitHub license](https://img.shields.io/github/license/codeforms/Grider)](https://github.com/codeforms/Grider/blob/master/LICENSE)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/codeforms/Grider)
