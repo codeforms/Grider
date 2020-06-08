@@ -14,11 +14,11 @@
 * Equal height columns
 
 ### TODO
-[ ] Fix responsive columns
-[ ] Fix offset columns
-[x] Remove spaces between columns
-[x] Equal height columns
-[x] Viewport breakpoints
-[x] Customizable
+- [ ] Fix responsive columns
+- [ ] Fix offset columns
+- [x] Remove spaces between columns
+- [x] Equal height columns
+- [x] Viewport breakpoints
+- [x] Customizable
 
 [Take a Look](https://codepen.io/underlinewords/pen/pogooob)
