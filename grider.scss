@@ -15,6 +15,7 @@ $row-name				: 'row';
 $container-name			: 'container';
 $column-name			: 'column';
 $offset					: 'offset';
+$equal					: 'equal';
 
 /******************** 
 COLUMN ********************/
@@ -30,11 +31,11 @@ $screen_viewport_lg		: 992px;
 $screen_viewport_xl		: 1260px;
 
 $viewports: (
-	(xs, $screen_viewport_xs),
-	(sm, $screen_viewport_sm), 
-	(md, $screen_viewport_md), 
-	(lg, $screen_viewport_lg), 
-	(xl, $screen_viewport_xl)
+  (xs, $screen_viewport_xs),
+  (sm, $screen_viewport_sm), 
+  (md, $screen_viewport_md), 
+  (lg, $screen_viewport_lg), 
+  (xl, $screen_viewport_xl)
 );
 
 /*** MIXINS ***/
@@ -44,37 +45,37 @@ $viewports: (
 	}
 }
 
+.#{$container-name} {
+	width: 95%;
+	margin: 0 auto;
+}
 .#{$row-name} {
 	display: grid;
 	grid-gap: $gutter;
 	grid-template-columns: repeat($grid, 1fr);
-}
-[class^="#{$column-name}"] {
-	height: auto;
-	padding: $column-padding;
-	min-height: $column-min-height;
+	&> [class^="#{$column-name}"] { 
+	    height: fit-content;
+	    padding: $column-padding;
+		min-height: $column-min-height;	
+	}
+	&.#{$equal} > [class^="#{$column-name}"] { 
+		height: auto;
+		grid-auto-rows: 1fr;	
+	}
 }
 @each $label, $breakpoint, $width in $viewports {
 	@include breakpoints($breakpoint) {
 	    @for $i from 1 through $grid {
+	    	$grid-columns: repeat(#{$i}, 1fr);
 			.#{$column-name}-#{$i} {
 				grid-column: span #{$i};
-				grid-template-columns: repeat(#{$i}, 1fr);
-			}
-			@for $y from 1 through $grid {
-				.#{$offset}-#{$label}-#{$y}.#{$column-name}-#{$label}-#{$y} {
-					grid-column: #{$y} / span #{$y};
-					grid-template-columns: repeat(#{$y}, 1fr);
-				}
 			}
 			.#{$column-name}-#{$label}-#{$i} {
 				grid-column-start: span #{$i};
-				grid-template-columns: repeat(#{$i}, 1fr);
+			}
+			.#{$column-name}-#{$label}-#{$i}.#{$offset}-#{$label}-#{$i} {
+				grid-column: #{$i} / span #{$i};
 			}
 		}
-		.#{$container-name} {
-			width: 95%;
-			margin: 0 auto;
-		}
-	}
+  	}
 }
