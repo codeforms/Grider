@@ -14,4 +14,8 @@
 * Column offsets
 * Equal height columns
 
+### TODO
+* Fix responsive columns
+* Remove spaces between columns
+
 [Take a Look](https://codepen.io/underlinewords/pen/pogooob)
