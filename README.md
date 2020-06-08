@@ -6,16 +6,20 @@
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/codeforms/Grider/releases)
 
 ### Features
-* Clean code
-* Simple enough and Fully customizable (grid number, class names, breakpoints etc.)
-* CSS Grid based, no longer Flexbox
+* Clean code, Simple enough and Fully customizable (grid number, class names, breakpoints etc.)
+* CSS Grid based, no longer Flexbox (since v1.3.0)
 * Viewport breakpoints
 * Column offsets
 * Equal height columns
 
 ### TODO
+<<<<<<< HEAD
 - [ ] Fix responsive columns
 - [ ] Fix offset columns
+=======
+- [ ] Fix offset columns
+- [x] Fix responsive columns
+>>>>>>> Optimized grider.scss
 - [x] Remove spaces between columns
 - [x] Equal height columns
 - [x] Viewport breakpoints
