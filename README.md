@@ -7,15 +7,18 @@
 
 ### Features
 * Clean code
-* Simple enough (just compile)
-* Fully customizable (grid number, class names etc.)
-* CSS Grid based, not Flexbox!
+* Simple enough and Fully customizable (grid number, class names, breakpoints etc.)
+* CSS Grid based, no longer Flexbox
 * Viewport breakpoints
 * Column offsets
 * Equal height columns
 
 ### TODO
-* Fix responsive columns
-* Remove spaces between columns
+[ ] Fix responsive columns
+[ ] Fix offset columns
+[x] Remove spaces between columns
+[x] Equal height columns
+[x] Viewport breakpoints
+[x] Customizable
 
 [Take a Look](https://codepen.io/underlinewords/pen/pogooob)

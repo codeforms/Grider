@@ -7,7 +7,7 @@
 /******************** 
 BASIC ********************/
 $grid 					: 16;
-$gutter					: 30px;
+$gutter					: 6px;
 
 /******************** 
 NAMES ********************/
@@ -15,7 +15,6 @@ $row-name				: 'row';
 $container-name			: 'container';
 $column-name			: 'column';
 $offset					: 'offset';
-//$equal				: 'equal';
 
 /******************** 
 COLUMN ********************/
@@ -48,7 +47,7 @@ $viewports: (
 .#{$row-name} {
 	display: grid;
 	grid-gap: $gutter;
-	grid-template-columns: repeat($grid, minmax(250px, 1fr));
+	grid-template-columns: repeat($grid, 1fr);
 }
 [class^="#{$column-name}"] {
 	height: auto;
@@ -60,14 +59,17 @@ $viewports: (
 	    @for $i from 1 through $grid {
 			.#{$column-name}-#{$i} {
 				grid-column: span #{$i};
+				grid-template-columns: repeat(#{$i}, 1fr);
 			}
 			@for $y from 1 through $grid {
-				.#{$offset}-#{$label}-#{$y}.#{$column-name}-#{$label}-#{$i} {
-					grid-column: #{$y} / span #{$i};
+				.#{$offset}-#{$label}-#{$y}.#{$column-name}-#{$label}-#{$y} {
+					grid-column: #{$y} / span #{$y};
+					grid-template-columns: repeat(#{$y}, 1fr);
 				}
 			}
 			.#{$column-name}-#{$label}-#{$i} {
 				grid-column-start: span #{$i};
+				grid-template-columns: repeat(#{$i}, 1fr);
 			}
 		}
 		.#{$container-name} {
