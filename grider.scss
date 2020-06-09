@@ -66,7 +66,6 @@ $viewports: (
 @each $label, $breakpoint, $width in $viewports {
 	@include breakpoints($breakpoint) {
 	    @for $i from 1 through $grid {
-	    	$grid-columns: repeat(#{$i}, 1fr);
 			.#{$column-name}-#{$i} {
 				grid-column: span #{$i};
 			}
