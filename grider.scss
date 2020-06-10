@@ -5,17 +5,28 @@
 */
 
 /******************** 
+ENABLE / DISABLE FEATURES ********************/
+$equal-feature 			: true;
+$offset-feature 		: true;
+
+/******************** 
 BASIC ********************/
 $grid 					: 16;
 $gutter					: 6px;
 
 /******************** 
-NAMES ********************/
-$row-name				: 'row';
-$container-name			: 'container';
-$column-name			: 'column';
+NAMING ********************/
+$row					: 'row';
+$container				: 'container';
+$column					: 'column';
 $offset					: 'offset';
 $equal					: 'equal';
+// breakpoints //
+$extra-small 			: 'xs';
+$small 					: 'sm';
+$medium 				: 'md';
+$large 					: 'lg';
+$extra-large 			: 'lg';
 
 /******************** 
 COLUMN ********************/
@@ -24,18 +35,18 @@ $column-min-height		: .125rem;
 
 /******************** 
 BREAKPOINTS ********************/
-$screen_viewport_xs		: 0;
-$screen_viewport_sm		: 500px;
-$screen_viewport_md		: 768px;
-$screen_viewport_lg		: 992px;
-$screen_viewport_xl		: 1260px;
+$breakpoints-extra-small	: 0;
+$breakpoints-small			: 500px;
+$breakpoints-medium			: 768px;
+$breakpoints-large			: 992px;
+$breakpoints-extra-large	: 1260px;
 
 $viewports: (
-  (xs, $screen_viewport_xs),
-  (sm, $screen_viewport_sm), 
-  (md, $screen_viewport_md), 
-  (lg, $screen_viewport_lg), 
-  (xl, $screen_viewport_xl)
+	($extra-small, $breakpoints-extra-small),
+	($small, $breakpoints-small), 
+	($medium, $breakpoints-medium), 
+	($large, $breakpoints-large), 
+	($extra-large, $breakpoints-extra-large)
 );
 
 /*** MIXINS ***/
@@ -45,35 +56,39 @@ $viewports: (
 	}
 }
 
-.#{$container-name} {
+.#{$container} {
 	width: 95%;
 	margin: 0 auto;
 }
-.#{$row-name} {
+.#{$row} {
 	display: grid;
 	grid-gap: $gutter;
 	grid-template-columns: repeat($grid, 1fr);
-	&> [class^="#{$column-name}"] { 
-	    height: fit-content;
-	    padding: $column-padding;
+	&> [class^="#{$column}"] { 
+		height: fit-content;
+		padding: $column-padding;
 		min-height: $column-min-height;	
 	}
-	&.#{$equal} > [class^="#{$column-name}"] { 
-		height: auto;	
+	@if $equal-feature {
+		&.#{$equal} > [class^="#{$column}"] { 
+			height: auto;	
+		}
 	}
 }
 @each $label, $breakpoint, $width in $viewports {
 	@include breakpoints($breakpoint) {
-	    @for $i from 1 through $grid {
-			.#{$column-name}-#{$i},
-			.#{$column-name}-#{$label}-#{$i} {
-				grid-column: span #{$i};
+		@for $id from 1 through $grid {
+			.#{$column}-#{$id},
+			.#{$column}-#{$label}-#{$id} {
+				grid-column: span #{$id};
 			}
-			@for $y from 1 through $grid {
-				.#{$column-name}-#{$label}-#{$i}.#{$offset}-#{$label}-#{$y} {
-					grid-column: #{$y} / span #{$i};
+			@if $offset-feature {
+				@for $offset-id from 1 through $grid {
+					.#{$column}-#{$label}-#{$id}.#{$offset}-#{$label}-#{$offset-id} {
+						grid-column: #{$offset-id} / span #{$id};
+					}
 				}
 			}
 		}
-  	}
+	}
 }

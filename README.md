@@ -8,11 +8,11 @@
 ***Take a look at*** [https://codepen.io/underlinewords/pen/pogooob](https://codepen.io/underlinewords/pen/pogooob)
 
 ### Features
-* Clean code, Simple enough and Fully customizable (grid number, class names, breakpoints etc.)
+* Clean code, Simple enough and Fully customizable (grid number, class names, breakpoints, enable/disable features etc.)
 * CSS Grid based, no longer Flexbox (since v1.3.0)
 * Viewport breakpoints
-* Column offsets
-* Equal height columns
+* ***Optionally*** "Column Offsets" Feature
+* ***Optionally*** "Equal Height Columns" Feature
 
 ### TODO
 - [x] Column Offsets
