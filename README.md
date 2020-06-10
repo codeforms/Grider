@@ -5,6 +5,8 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/codeforms/Grider)
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/codeforms/Grider/releases)
 
+***Take a look at*** [https://codepen.io/underlinewords/pen/pogooob](https://codepen.io/underlinewords/pen/pogooob)
+
 ### Features
 * Clean code, Simple enough and Fully customizable (grid number, class names, breakpoints etc.)
 * CSS Grid based, no longer Flexbox (since v1.3.0)
@@ -13,11 +15,8 @@
 * Equal height columns
 
 ### TODO
-- [ ] Fix offset columns
-- [x] Fix responsive columns
-- [x] Remove spaces between columns
+- [x] Column Offsets
+- [x] Responsive Columns
 - [x] Equal height columns
 - [x] Viewport breakpoints
 - [x] Customizable
-
-[Take a Look](https://codepen.io/underlinewords/pen/pogooob)

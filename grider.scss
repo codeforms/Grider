@@ -59,21 +59,20 @@ $viewports: (
 		min-height: $column-min-height;	
 	}
 	&.#{$equal} > [class^="#{$column-name}"] { 
-		height: auto;
-		grid-auto-rows: 1fr;	
+		height: auto;	
 	}
 }
 @each $label, $breakpoint, $width in $viewports {
 	@include breakpoints($breakpoint) {
 	    @for $i from 1 through $grid {
-			.#{$column-name}-#{$i} {
+			.#{$column-name}-#{$i},
+			.#{$column-name}-#{$label}-#{$i} {
 				grid-column: span #{$i};
 			}
-			.#{$column-name}-#{$label}-#{$i} {
-				grid-column-start: span #{$i};
-			}
-			.#{$column-name}-#{$label}-#{$i}.#{$offset}-#{$label}-#{$i} {
-				grid-column: #{$i} / span #{$i};
+			@for $y from 1 through $grid {
+				.#{$column-name}-#{$label}-#{$i}.#{$offset}-#{$label}-#{$y} {
+					grid-column: #{$y} / span #{$i};
+				}
 			}
 		}
   	}
