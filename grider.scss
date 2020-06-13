@@ -75,7 +75,7 @@ $viewports: (
 		}
 	}
 }
-@each $label, $breakpoint, $width in $viewports {
+@each $label, $breakpoint in $viewports {
 	@include breakpoints($breakpoint) {
 		@for $id from 1 through $grid {
 			.#{$column}-#{$id},
